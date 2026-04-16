@@ -1,42 +1,61 @@
+
+
+
+
 # Exchange
-Module to configure, send and receive Exchange emails
 
-## Commands
+Connect to Microsoft Exchange servers to send, read, and manage emails and folders via web services.
 
-<ul id="commands_readme">
-    <li>Email Configuration</li>
-    <li>Send Email</li>
-    <li>Get all emails</li>
-    <li>Get new email</li>
-    <li>Read email for ID</li>
-    <li>Move email to folder</li>
-    <li>Reply email for ID</li>
-    <li>Forward email for ID</li>
-</ul>
+*Read this in other languages: [English](README.md), [Português](README.pr.md), [Español](README.es.md)*
 
-**In the example robot you must change the configuration data for yours.
+## How to install this module
 
-![alt text](https://raw.githubusercontent.com/rocketbot-cl/Exchange/master/example/exchange.png)
-
-<strong>Video Example:</strong>
-
-[![Exchange](https://img.youtube.com/vi/mgpiej1NBbs/0.jpg)](https://www.youtube.com/watch?v=mgpiej1NBbs "Exchange")
+To install the module in Rocketbot Studio, it can be done in two ways:
+1. Manual: __Download__ the .zip file and unzip it in the modules folder. The folder name must be the same as the module and inside it must have the following files and folders: \__init__.py, package.json, docs, example and libs. If you have the application open, refresh your browser to be able to use the new module.
+2. Automatic: When entering Rocketbot Studio on the right margin you will find the **Addons** section, select **Install Mods**, search for the desired module and press install.
 
 
-<h2>Dependencies</h2>
+## Overview
 
-<ul>
-  <li>
-    <strong>
-      <a href="https://pypi.org/project/exchangelib/">exchangelib</a>
-    </strong> 
-  </li>  
-</ul>  
 
-<h2>License</h2>
+1. Email Configuration
+Enter the credentials for configuration
 
-<p><a href="http://badges.mit-license.org" rel="nofollow"><img src="https://camo.githubusercontent.com/107590fac8cbd65071396bb4d04040f76cde5bde/687474703a2f2f696d672e736869656c64732e696f2f3a6c6963656e73652d6d69742d626c75652e7376673f7374796c653d666c61742d737175617265" alt="License" data-canonical-src="http://img.shields.io/:license-mit-blue.svg?style=flat-square" style="max-width:100%;"></a></p>
+2. Send Email
+Send email, before you must configurate the server
 
-<ul>
-  <li><strong><a href="http://opensource.org/licenses/mit-license.php" rel="nofollow">MIT license</a></strong></li>
-</ul>  
+3. get all email
+Get ID from unread mail
+
+4. get new email
+Get ID from unread mail
+
+5. Read email for id
+Read the content of mail for ID
+
+6. Move email to folder
+Move email with ID to especific folder
+
+7. Reply email for ID
+Reply email for ID
+
+8. Forward email for ID
+Forward email for ID
+
+
+
+
+----
+### OS
+
+- windows
+- mac
+- linux
+- docker
+
+### Dependencies
+- [**exchangelib**](https://pypi.org/project/exchangelib/)
+### License
+
+![MIT](https://img.shields.io/github/license/instaloader/instaloader.svg)
+[MIT](https://opensource.org/license/mit)
