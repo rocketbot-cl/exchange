@@ -105,11 +105,20 @@ try:
         password = GetParams('pass')
         server = GetParams('server')
         address = GetParams('address')
+        result = GetParams("result")
         print('USUARIO', user)
 
         exchange_module = ExchangeModule(user, password, server, address)
         config = exchange_module.init()
         print(config)
+
+        try:
+            Account(primary_smtp_address=address, config=config,
+                    access_type=DELEGATE, autodiscover=False)
+            SetVar(result, True)
+        except:
+            SetVar(result, False)
+
 
     if module == "send_mail":
         to = GetParams('to')
