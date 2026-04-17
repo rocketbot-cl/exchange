@@ -1,7 +1,3 @@
-
-
-
-
 # Exchange
 
 Connect to Microsoft Exchange servers to send, read, and manage emails and folders via web services.
