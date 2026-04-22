@@ -23,14 +23,38 @@ Para instalar librerias se debe ingresar por terminal a la carpeta "libs"
     pip install <package> -t .
 
 """
+
+
+import sys
+import os
+from types import ModuleType
+
 try:
 
     import shelve
-    import os
+    import os, sys
+    base_path = tmp_global_obj["basepath"] # type: ignore
+    cur_path = base_path + 'modules' + os.sep + 'exchange' + os.sep + 'libs' + os.sep
+
+
+    if cur_path not in sys.path:
+        sys.path.insert(0,cur_path)
+
     try:
+        if 'logging.config' not in sys.modules:
+            mock_logging_config = ModuleType('logging.config')
+            
+            mock_logging_config.dictConfig = lambda config: None
+            mock_logging_config.fileConfig = lambda fname, defaults=None: None
+            mock_logging_config.listen = lambda port=None: None
+            mock_logging_config.stopListening = lambda: None
+            
+            sys.modules['logging.config'] = mock_logging_config
+
         from exchangelib import Account, DELEGATE, HTMLBody
         from exchangelib.folders import Message, Mailbox
         from exchangelib import FileAttachment
+
     except ImportError:
         print("New libs")
         from exchangelib.account import Account
@@ -81,11 +105,20 @@ try:
         password = GetParams('pass')
         server = GetParams('server')
         address = GetParams('address')
+        result = GetParams("result")
         print('USUARIO', user)
 
         exchange_module = ExchangeModule(user, password, server, address)
         config = exchange_module.init()
-        # print(config)
+        print(config)
+
+        try:
+            Account(primary_smtp_address=address, config=config,
+                    access_type=DELEGATE, autodiscover=False)
+            SetVar(result, True)
+        except:
+            SetVar(result, False)
+
 
     if module == "send_mail":
         to = GetParams('to')
@@ -175,6 +208,7 @@ try:
     if module == "get_new_mail":
 
         if exchange_module.config is not None:
+            print("error")
             config = exchange_module.config
         else:
             raise Exception("Execute Email Configuration command")
