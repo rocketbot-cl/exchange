@@ -61,6 +61,7 @@ try:
         from exchangelib.credentials import DELEGATE
         from exchangelib.items import Message
         from exchangelib.properties import Mailbox, HTMLBody
+        from exchangelib.attachments import FileAttachment
 
 
     from exchangelib.protocol import BaseProtocol, NoVerifyHTTPAdapter
