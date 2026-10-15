@@ -262,8 +262,8 @@ try:
 
         mail = a.inbox.get(id=id_mail)
         cont = BeautifulSoup(mail.body, "html")
-        from datetime import datetime, timedelta
-        date_ = mail.datetime_received - timedelta(hours=4)
+        from datetime import datetime
+        date_ = datetime.fromtimestamp(mail.datetime_received.timestamp())
         date_str = date_.strftime("%Y-%m-%d %H:%M:%S")
         final = {'datetime_received': date_str, 'subject': mail.subject, 'from': mail.author.email_address, 'body': cont.text.strip(),
                  'files': [m.name for m in mail.attachments]}
